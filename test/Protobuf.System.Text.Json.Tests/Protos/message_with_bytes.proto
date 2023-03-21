@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+option csharp_namespace = "System.Text.Json.Protobuf.Tests";
+
+message MessageWithBytes {
+    bytes bytes_property = 1;
+}

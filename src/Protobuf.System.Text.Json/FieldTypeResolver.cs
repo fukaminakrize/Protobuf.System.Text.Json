@@ -49,11 +49,14 @@ internal static class FieldTypeResolver
                     return typeof(bool?);
                 if (clrType == typeof(StringValue))
                     return typeof(string);
+                if (clrType == typeof(BytesValue))
+                    return typeof(byte[]);
                 return clrType;
             case FieldType.Enum when fieldDescriptor.IsRepeated:
                 var fieldType = propertyTypeLookup[fieldDescriptor.PropertyName];
                 return fieldType.GenericTypeArguments[0];
             case FieldType.Enum:
+            case FieldType.Bytes:
             case FieldType.Message:
                 return propertyTypeLookup[fieldDescriptor.PropertyName];
             default:
